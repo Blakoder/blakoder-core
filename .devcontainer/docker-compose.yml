@@ -2,10 +2,10 @@ version: "3.8"
 
 services:
   workspace:
-    image: controlla/controlla:php-8.2
+    image: capitalcheckinapp/capitalcheckin:php-8.2
     platform: linux/x86_64
     volumes:
-      - ../:/var/www/html
+      - ../:/app
     networks:
       - workspace
 

@@ -12,7 +12,7 @@
   "service": "workspace",
   // The optional 'workspaceFolder' property is the path VS Code should open by default when
   // connected. This is typically a file mount in .devcontainer/docker-compose.yml
-  "workspaceFolder": "/var/www/html",
+  "workspaceFolder": "/app",
   "customizations": {
     "vscode": {
       "extensions": [
@@ -54,8 +54,8 @@
   // Configure tool-specific properties.
   // "customizations": {},
   // Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-  "remoteUser": "controlla",
+  "remoteUser": "capitalcheckin",
   "mounts": [
-    "source=~/.ssh,target=/home/controlla/.ssh,type=bind"
+    "source=~/.ssh,target=/home/capitalcheckin/.ssh,type=bind"
   ]
 }
