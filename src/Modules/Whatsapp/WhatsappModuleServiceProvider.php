@@ -63,7 +63,7 @@ class WhatsappModuleServiceProvider extends BaseModuleServiceProvider
     public function register(): void
     {
         $this->app->singleton(WhatsAppService::class, function () {
-            return new WhatsAppService();
+            return new WhatsAppService;
         });
     }
 }

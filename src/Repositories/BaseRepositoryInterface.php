@@ -1,12 +1,12 @@
 <?php
 
-namespace Blakoder\Core\Services;
+namespace Blakoder\Core\Repositories;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
-interface BaseServiceInterface
+interface BaseRepositoryInterface
 {
     /**
      * Get paginated results
@@ -16,7 +16,6 @@ interface BaseServiceInterface
     /**
      * Find models by attributes
      *
-     * @param  mixed  $id
      * @return Model|null
      */
     public function find(int $id);
@@ -24,7 +23,6 @@ interface BaseServiceInterface
     /**
      * Find or fail the model
      *
-     * @param  mixed  $id
      * @return mixed
      */
     public function findOrFail(int $id);
@@ -46,15 +44,12 @@ interface BaseServiceInterface
     /**
      * Update a model
      *
-     * @param  int  $id
      * @return bool|mixed
      */
     public function update(int $id, array $data);
 
     /**
      * Delete a model
-     *
-     * @param  int|Model  $id
      */
     public function delete(int $id);
 

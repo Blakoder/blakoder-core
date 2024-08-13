@@ -68,7 +68,7 @@ class BaseService implements BaseServiceInterface
      * Update a model
      *
      * @param  int|mixed  $id
-     * @return void
+     * @return bool|mixed
      */
     public function update($id, array $data)
     {
