@@ -2,7 +2,7 @@
 
 namespace App\Services\Conversation;
 
-use Controlla\Core\Services\BaseServiceInterface;
+use Blakoder\Core\Services\BaseServiceInterface;
 
 interface ConversationServiceInterface extends BaseServiceInterface
 {

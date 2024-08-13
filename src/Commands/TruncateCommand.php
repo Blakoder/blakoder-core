@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Console\ConfirmableTrait;

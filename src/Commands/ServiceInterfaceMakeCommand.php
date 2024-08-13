@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
@@ -14,7 +14,7 @@ class ServiceInterfaceMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'controlla:make:serviceinterface';
+    protected $name = 'blakoder:make:serviceinterface';
 
     /**
      * The console command description.

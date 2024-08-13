@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 
@@ -11,7 +11,7 @@ class ScopeMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'controlla:make:scope';
+    protected $name = 'blakoder:make:scope';
 
     /**
      * The console command description.

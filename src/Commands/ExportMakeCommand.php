@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
@@ -14,7 +14,7 @@ class ExportMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'controlla:make:export';
+    protected $name = 'blakoder:make:export';
 
     /**
      * The console command description.

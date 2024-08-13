@@ -1,8 +1,8 @@
 <?php
 
-namespace Controlla\Core\Tests\Integration\Generators;
+namespace Blakoder\Core\Tests\Integration\Generators;
 
-use Controlla\Core\CoreServiceProvider;
+use Blakoder\Core\CoreServiceProvider;
 use Orchestra\Testbench\Concerns\InteractsWithPublishedFiles;
 
 abstract class TestCase extends \Orchestra\Testbench\TestCase

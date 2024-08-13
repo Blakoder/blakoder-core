@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
@@ -22,7 +22,7 @@ class ReplaceLinesCommand extends Command
      *
      * @var string
      */
-    protected $name = 'controlla:replace:lines';
+    protected $name = 'blakoder:replace:lines';
 
     /**
      * The console command description.

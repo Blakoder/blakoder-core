@@ -1,9 +1,9 @@
 <?php
 
-namespace Controlla\Core\Modules;
+namespace Blakoder\Core\Modules;
 
 use Carbon\Carbon;
-use Controlla\Core\Contracts\Controlla as ControllaContract;
+use Blakoder\Core\Contracts\Blakoder as BlakoderContract;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
@@ -26,8 +26,8 @@ abstract class BaseModuleServiceProvider extends ServiceProvider
     /** @var string */
     protected $namespaceRoot;
 
-    /** @var ControllaContract */
-    protected $controlla;
+    /** @var BlakoderContract */
+    protected $blakoder;
 
     /** @var array */
     protected $migrations = [];
@@ -62,7 +62,7 @@ abstract class BaseModuleServiceProvider extends ServiceProvider
     {
         parent::__construct($app);
 
-        $this->controlla = $app->make(ControllaContract::class); // retrieve the controlla singleton
+        $this->blakoder = $app->make(BlakoderContract::class); // retrieve the blakoder singleton
         $this->basePath = dirname((new ReflectionClass(static::class))->getFileName());
         $this->name = Str::title("{$this->id} Module");
         $this->namespaceRoot = static::class;
@@ -318,7 +318,7 @@ abstract class BaseModuleServiceProvider extends ServiceProvider
     protected function replaceLines()
     {
         foreach ($this->models as $key => $model) {
-            Artisan::call('controlla:replace:lines', [
+            Artisan::call('blakoder:replace:lines', [
                 '--model' => $model,
             ]);
         }

@@ -2,7 +2,7 @@
 
 namespace App\Repositories\Conversation;
 
-use Controlla\Core\Repositories\BaseRepositoryInterface;
+use Blakoder\Core\Repositories\BaseRepositoryInterface;
 
 interface ConversationRepositoryInterface extends BaseRepositoryInterface
 {

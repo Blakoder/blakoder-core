@@ -16,7 +16,7 @@
     backupStaticProperties="false"
 >
     <testsuites>
-        <testsuite name="Controlla Test Suite">
+        <testsuite name="Blakoder Test Suite">
             <directory>tests</directory>
         </testsuite>
     </testsuites>

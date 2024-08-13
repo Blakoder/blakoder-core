@@ -1,8 +1,8 @@
 <?php
 
-namespace Controlla\Core\Services;
+namespace Blakoder\Core\Services;
 
-use Controlla\Core\Repositories\BaseRepositoryInterface;
+use Blakoder\Core\Repositories\BaseRepositoryInterface;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Modules\Whatsapp\Services;
+namespace Blakoder\Core\Modules\Whatsapp\Services;
 
 use Twilio\Rest\Client;
 

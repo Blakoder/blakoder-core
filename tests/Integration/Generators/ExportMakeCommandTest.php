@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Tests\Integration\Generators;
+namespace Blakoder\Core\Tests\Integration\Generators;
 
 class ExportMakeCommandTest extends TestCase
 {
@@ -10,7 +10,7 @@ class ExportMakeCommandTest extends TestCase
 
     public function testItCanGenerateRequestFile()
     {
-        $this->artisan('controlla:make:export', ['name' => 'FooExport', '--model' => 'Foo'])
+        $this->artisan('blakoder:make:export', ['name' => 'FooExport', '--model' => 'Foo'])
             ->assertExitCode(0);
 
         $this->assertFileContains([

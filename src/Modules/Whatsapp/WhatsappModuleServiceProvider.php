@@ -1,9 +1,9 @@
 <?php
 
-namespace Controlla\Core\Modules\Whatsapp;
+namespace Blakoder\Core\Modules\Whatsapp;
 
-use Controlla\Core\Modules\BaseModuleServiceProvider;
-use Controlla\Core\Modules\Whatsapp\Services\WhatsAppService;
+use Blakoder\Core\Modules\BaseModuleServiceProvider;
+use Blakoder\Core\Modules\Whatsapp\Services\WhatsAppService;
 
 class WhatsappModuleServiceProvider extends BaseModuleServiceProvider
 {

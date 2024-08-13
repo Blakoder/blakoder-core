@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Models;
+namespace Blakoder\Core\Models;
 
 enum LogType: string
 {

@@ -2,7 +2,7 @@
 
 namespace {{ namespace }};
 
-use Controlla\Core\Services\BaseServiceInterface;
+use Blakoder\Core\Services\BaseServiceInterface;
 
 interface {{ class }} extends BaseServiceInterface
 {

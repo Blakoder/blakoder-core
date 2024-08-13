@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Contracts\Console\PromptsForMissingInput;
@@ -15,14 +15,14 @@ class ModuleCommand extends Command implements PromptsForMissingInput
      *
      * @var string
      */
-    protected $signature = 'controlla:module {module}';
+    protected $signature = 'blakoder:module {module}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'Install Controlla Module';
+    protected $description = 'Install Blakoder Module';
 
     /**
      * The filesystem instance.
@@ -62,7 +62,7 @@ class ModuleCommand extends Command implements PromptsForMissingInput
             $this->call('migrate');
         }
 
-        $this->components->info(sprintf('Controlla Module [%s] installed successfully.', $this->getModule()));
+        $this->components->info(sprintf('Blakoder Module [%s] installed successfully.', $this->getModule()));
     }
 
     /**
@@ -109,7 +109,7 @@ class ModuleCommand extends Command implements PromptsForMissingInput
      */
     protected function getModule()
     {
-        return sprintf('Controlla\Core\Modules\%s\%sModuleServiceProvider', $this->getModuleInput(), $this->getModuleInput());
+        return sprintf('Blakoder\Core\Modules\%s\%sModuleServiceProvider', $this->getModuleInput(), $this->getModuleInput());
     }
 
     /**
@@ -129,7 +129,7 @@ class ModuleCommand extends Command implements PromptsForMissingInput
      */
     protected function registerModule()
     {
-        $path = $this->getPath('/../config/controlla');
+        $path = $this->getPath('/../config/blakoder');
         $file = $this->files->get($path);
 
         return $this->files->put($path, str_replace('// New Module', $this->getModule() . "::class,\r\n        // New Module", $file));

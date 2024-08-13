@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
@@ -36,24 +36,24 @@ class ModelMakeCommand extends GeneratorCommand
      */
     public function handle()
     {
-        $this->info('Use @Controlla/Cli for this action');
+        $this->info('Use @Blakoder/Cli for this action');
         if ($this->option('all')) {
             $this->error('Something went wrong!');
-            $this->info('Use @Controlla/Cli for this action');
+            $this->info('Use @Blakoder/Cli for this action');
 
             return false;
         }
 
         if ($this->option('controller')) {
             $this->error('Something went wrong!');
-            $this->info('Use @Controlla/Cli for this action');
+            $this->info('Use @Blakoder/Cli for this action');
 
             return false;
         }
 
         if ($this->option('resource')) {
             $this->error('Something went wrong!');
-            $this->info('Use @Controlla/Cli for this action');
+            $this->info('Use @Blakoder/Cli for this action');
 
             return false;
         }

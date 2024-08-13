@@ -1,9 +1,9 @@
 <?php
 
-namespace Controlla\Core\Database\Factories;
+namespace Blakoder\Core\Database\Factories;
 
-use Controlla\Core\Models\Log;
-use Controlla\Core\Models\LogType;
+use Blakoder\Core\Models\Log;
+use Blakoder\Core\Models\LogType;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class LogFactory extends Factory

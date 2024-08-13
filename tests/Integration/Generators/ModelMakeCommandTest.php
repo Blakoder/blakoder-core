@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Tests\Integration\Generators;
+namespace Blakoder\Core\Tests\Integration\Generators;
 
 class ModelMakeCommandTest extends TestCase
 {

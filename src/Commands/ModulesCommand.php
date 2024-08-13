@@ -1,9 +1,9 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
-use Controlla\Core\Contracts\Controlla;
-use Controlla\Core\Modules\BaseModuleServiceProvider;
+use Blakoder\Core\Contracts\Blakoder;
+use Blakoder\Core\Modules\BaseModuleServiceProvider;
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 
@@ -14,28 +14,28 @@ class ModulesCommand extends Command
      *
      * @var string
      */
-    protected $signature = 'controlla:modules {--a|all : List all modules, including implicit ones}';
+    protected $signature = 'blakoder:modules {--a|all : List all modules, including implicit ones}';
 
     /**
      * The console command description.
      *
      * @var string
      */
-    protected $description = 'List Controlla Modules';
+    protected $description = 'List Blakoder Modules';
 
     protected $headers = ['#', 'Name', 'Version', 'Id', 'Namespace'];
 
     /**
      * Execute the console command.
      */
-    public function handle(Controlla $controlla)
+    public function handle(Blakoder $blakoder)
     {
-        $modules = $controlla->getModules((bool) $this->option('all'));
+        $modules = $blakoder->getModules((bool) $this->option('all'));
 
         if ($modules->count()) {
             $this->showModules($modules);
         } else {
-            $this->line('No modules have been registered. Add one in config/controlla.php.');
+            $this->line('No modules have been registered. Add one in config/blakoder.php.');
         }
     }
 

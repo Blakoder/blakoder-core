@@ -1,9 +1,9 @@
 <?php
 
-namespace Controlla\Core\Tests;
+namespace Blakoder\Core\Tests;
 
-use Controlla\Core\Contracts\Controlla;
-use Controlla\Core\CoreServiceProvider;
+use Blakoder\Core\Contracts\Blakoder;
+use Blakoder\Core\CoreServiceProvider;
 use Orchestra\Testbench\Concerns\InteractsWithPublishedFiles;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -11,16 +11,16 @@ class TestCase extends Orchestra
 {
     use InteractsWithPublishedFiles;
 
-    /** @var Controlla This was added only to help IDE auto-completion */
-    protected $controlla;
+    /** @var Blakoder This was added only to help IDE auto-completion */
+    protected $blakoder;
 
     protected function setUp(): void
     {
         parent::setUp();
 
-        $this->controlla = $this->app->make('controlla');
+        $this->blakoder = $this->app->make('blakoder');
         // Factory::guessFactoryNamesUsing(
-        //     fn (string $modelName) => 'Controlla\\Core\\Database\\Factories\\'.class_basename($modelName).'Factory'
+        //     fn (string $modelName) => 'Blakoder\\Core\\Database\\Factories\\'.class_basename($modelName).'Factory'
         // );
     }
 

@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Closure;
 use Illuminate\Console\Command;
@@ -29,7 +29,7 @@ class InstallCrmModuleCommand extends Command
     {
         $this->signature = 'module:crm';
 
-        $this->description = 'Install Controlla Inventory Module';
+        $this->description = 'Install Blakoder Inventory Module';
 
         $this->package = $package;
 

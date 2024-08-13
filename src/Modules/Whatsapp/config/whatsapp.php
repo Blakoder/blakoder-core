@@ -9,7 +9,7 @@
 | para la integración con WhatsApp Business. Estos valores se obtienen de
 | las variables de entorno definidas en tu archivo .env.
 |
-| (c) Iván Sotelo <isotelo@controlla.com.mx>
+| (c) Iván Sotelo <isotelo@blakoder.com.mx>
 */
 
 return [

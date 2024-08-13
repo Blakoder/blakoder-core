@@ -1,26 +1,26 @@
 <?php
 
-namespace Controlla\Core;
+namespace Blakoder\Core;
 
-use Controlla\Core\Commands\ControllerMakeCommand;
-use Controlla\Core\Commands\ExportMakeCommand;
-use Controlla\Core\Commands\ImportMakeCommand;
-use Controlla\Core\Commands\LangMakeCommand;
-use Controlla\Core\Commands\ModelMakeCommand;
-use Controlla\Core\Commands\ModuleCommand;
-use Controlla\Core\Commands\ModulesCommand;
-use Controlla\Core\Commands\NewComponentCommand;
-use Controlla\Core\Commands\PolicyMakeCommand;
-use Controlla\Core\Commands\ReplaceLinesCommand;
-use Controlla\Core\Commands\RepositoryInterfaceMakeCommand;
-use Controlla\Core\Commands\RepositoryMakeCommand;
-use Controlla\Core\Commands\RequestMakeCommand;
-use Controlla\Core\Commands\ResourceMakeCommand;
-use Controlla\Core\Commands\ScopeMakeCommand;
-use Controlla\Core\Commands\ServiceInterfaceMakeCommand;
-use Controlla\Core\Commands\ServiceMakeCommand;
-use Controlla\Core\Commands\TruncateCommand;
-use Controlla\Core\Contracts\Controlla as ControllaContract;
+use Blakoder\Core\Commands\ControllerMakeCommand;
+use Blakoder\Core\Commands\ExportMakeCommand;
+use Blakoder\Core\Commands\ImportMakeCommand;
+use Blakoder\Core\Commands\LangMakeCommand;
+use Blakoder\Core\Commands\ModelMakeCommand;
+use Blakoder\Core\Commands\ModuleCommand;
+use Blakoder\Core\Commands\ModulesCommand;
+use Blakoder\Core\Commands\NewComponentCommand;
+use Blakoder\Core\Commands\PolicyMakeCommand;
+use Blakoder\Core\Commands\ReplaceLinesCommand;
+use Blakoder\Core\Commands\RepositoryInterfaceMakeCommand;
+use Blakoder\Core\Commands\RepositoryMakeCommand;
+use Blakoder\Core\Commands\RequestMakeCommand;
+use Blakoder\Core\Commands\ResourceMakeCommand;
+use Blakoder\Core\Commands\ScopeMakeCommand;
+use Blakoder\Core\Commands\ServiceInterfaceMakeCommand;
+use Blakoder\Core\Commands\ServiceMakeCommand;
+use Blakoder\Core\Commands\TruncateCommand;
+use Blakoder\Core\Contracts\Blakoder as BlakoderContract;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -34,9 +34,9 @@ class CoreServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('controlla-core')
-            ->hasConfigFile('controlla')
-            ->hasMigration('create_controlla_logs_table')
+            ->name('blakoder-core')
+            ->hasConfigFile('blakoder')
+            ->hasMigration('create_blakoder_logs_table')
             ->hasCommands([
                 TruncateCommand::class,
                 ControllerMakeCommand::class,
@@ -62,19 +62,19 @@ class CoreServiceProvider extends PackageServiceProvider
     public function packageRegistered()
     {
         // New Singleton
-        $this->app->singleton(ControllaContract::class, Controlla::class);
+        $this->app->singleton(BlakoderContract::class, Blakoder::class);
 
         // Make an instance
-        $controllaInstance = $this->app->make(ControllaContract::class);
-        // And make it available as the 'controlla' service
-        $this->app->instance('controlla', $controllaInstance);
+        $blakoderInstance = $this->app->make(BlakoderContract::class);
+        // And make it available as the 'blakoder' service
+        $this->app->instance('blakoder', $blakoderInstance);
 
-        $modules = config('controlla.modules') ?: [];
+        $modules = config('blakoder.modules') ?: [];
 
         foreach ($modules as $key => $value) {
             $module = is_string($key) ? $key : $value;
             $config = is_array($value) ? $value : [];
-            $controllaInstance->registerModule($module, $config);
+            $blakoderInstance->registerModule($module, $config);
         }
         // if ($this->app->runningInConsole()) {
         //     $this->app->extend('command.make.model', function () {

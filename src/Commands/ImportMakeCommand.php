@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Symfony\Component\Console\Input\InputOption;
@@ -14,7 +14,7 @@ class ImportMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'controlla:make:import';
+    protected $name = 'blakoder:make:import';
 
     /**
      * The console command description.

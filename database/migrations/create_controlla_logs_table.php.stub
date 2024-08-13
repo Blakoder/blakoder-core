@@ -8,7 +8,7 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('controlla_logs', function (Blueprint $table) {
+        Schema::create('blakoder_logs', function (Blueprint $table) {
             $table->bigIncrements('sequence');
             $table->uuid('uuid');
             $table->boolean('should_display_on_index')->default(true);

@@ -1,8 +1,8 @@
 <?php
 
-namespace Controlla\Core\Repositories;
+namespace Blakoder\Core\Repositories;
 
-use Controlla\Core\Models\Log;
+use Blakoder\Core\Models\Log;
 
 class DatabaseEntriesRepository implements ClearableRepository, Contract, PrunableRepository, TerminableRepository
 {

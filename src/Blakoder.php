@@ -1,14 +1,14 @@
 <?php
 
-namespace Controlla\Core;
+namespace Blakoder\Core;
 
-use Controlla\Core\Contracts\Controlla as ControllaContract;
-use Controlla\Core\Modules\BaseModuleServiceProvider;
+use Blakoder\Core\Contracts\Blakoder as BlakoderContract;
+use Blakoder\Core\Modules\BaseModuleServiceProvider;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Support\Collection;
 use ReflectionClass;
 
-class Controlla implements ControllaContract
+class Blakoder implements BlakoderContract
 {
     /** @var Collection */
     protected $modules;
@@ -23,7 +23,7 @@ class Controlla implements ControllaContract
     protected $basePath;
 
     /**
-     * Controlla class constructor
+     * Blakoder class constructor
      */
     public function __construct(Application $app)
     {

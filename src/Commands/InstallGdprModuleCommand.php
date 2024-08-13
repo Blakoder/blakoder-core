@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Closure;
 use Illuminate\Console\Command;
@@ -29,7 +29,7 @@ class InstallGdprModuleCommand extends Command
     {
         $this->signature = 'module:gdpr';
 
-        $this->description = 'Install Controlla Gdpr Module';
+        $this->description = 'Install Blakoder Gdpr Module';
 
         $this->package = $package;
 

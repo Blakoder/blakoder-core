@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Tests\Integration\Generators;
+namespace Blakoder\Core\Tests\Integration\Generators;
 
 class LangMakeCommandTest extends TestCase
 {
@@ -10,7 +10,7 @@ class LangMakeCommandTest extends TestCase
 
     public function testItCanGenerateRequestFile()
     {
-        $this->artisan('controlla:make:lang', ['name' => 'foo', '--model' => 'Foo', '--lang' => 'es'])
+        $this->artisan('blakoder:make:lang', ['name' => 'foo', '--model' => 'Foo', '--lang' => 'es'])
             ->assertExitCode(0);
 
         $this->assertFileContains([

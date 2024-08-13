@@ -1,20 +1,20 @@
 <?php
 
 /**
- * Contains the Controlla interface.
+ * Contains the Blakoder interface.
  *
- * @copyright   Copyright (c) 2024 Controlla
- * @author      Controlla
+ * @copyright   Copyright (c) 2024 Blakoder
+ * @author      Blakoder
  * @license     MIT
  *
  * @since       2016-10-30
  */
 
-namespace Controlla\Core\Contracts;
+namespace Blakoder\Core\Contracts;
 
 use Illuminate\Support\Collection;
 
-interface Controlla
+interface Blakoder
 {
     /**
      * Registers a new module based on its class name

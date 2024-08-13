@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Models;
+namespace Blakoder\Core\Models;
 
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -18,7 +18,7 @@ class Log extends Model
      *
      * @var string
      */
-    protected $table = 'controlla_logs';
+    protected $table = 'blakoder_logs';
 
     public $timestamps = false;
 

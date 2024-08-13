@@ -13,7 +13,7 @@ return [
     | this command should be run:
     | ```
     | $schedule->command('model:prune', [
-    |   '--model' => [Controlla\Core\Models\Log::class],
+    |   '--model' => [Blakoder\Core\Models\Log::class],
     | ])->daily();
     |
     */

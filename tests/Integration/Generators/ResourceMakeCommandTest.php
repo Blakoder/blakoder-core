@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Tests\Integration\Generators;
+namespace Blakoder\Core\Tests\Integration\Generators;
 
 class ResourceMakeCommandTest extends TestCase
 {
@@ -10,7 +10,7 @@ class ResourceMakeCommandTest extends TestCase
 
     public function testItCanGenerateRequestFile()
     {
-        $this->artisan('controlla:make:resource', ['name' => 'FooResource', '--model' => 'Foo'])
+        $this->artisan('blakoder:make:resource', ['name' => 'FooResource', '--model' => 'Foo'])
             ->assertExitCode(0);
 
         $this->assertFileContains([

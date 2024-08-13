@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Commands;
+namespace Blakoder\Core\Commands;
 
 use Illuminate\Console\GeneratorCommand;
 use Illuminate\Support\Str;
@@ -15,7 +15,7 @@ class LangMakeCommand extends GeneratorCommand
      *
      * @var string
      */
-    protected $name = 'controlla:make:lang';
+    protected $name = 'blakoder:make:lang';
 
     /**
      * The console command description.

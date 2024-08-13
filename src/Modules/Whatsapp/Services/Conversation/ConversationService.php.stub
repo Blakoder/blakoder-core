@@ -3,7 +3,7 @@
 namespace App\Services\Conversation;
 
 use App\Repositories\Conversation\ConversationRepositoryInterface;
-use Controlla\Core\Services\BaseService;
+use Blakoder\Core\Services\BaseService;
 
 class ConversationService extends BaseService implements ConversationServiceInterface
 {

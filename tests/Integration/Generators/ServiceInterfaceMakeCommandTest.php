@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Tests\Integration\Generators;
+namespace Blakoder\Core\Tests\Integration\Generators;
 
 class ServiceInterfaceMakeCommandTest extends TestCase
 {
@@ -10,12 +10,12 @@ class ServiceInterfaceMakeCommandTest extends TestCase
 
     public function testItCanGenerateRequestFile()
     {
-        $this->artisan('controlla:make:serviceinterface', ['name' => 'FooServiceInterface', '--model' => 'Foo'])
+        $this->artisan('blakoder:make:serviceinterface', ['name' => 'FooServiceInterface', '--model' => 'Foo'])
             ->assertExitCode(0);
 
         $this->assertFileContains([
             'namespace App\Services\Foo;',
-            'use Controlla\Core\Services\BaseServiceInterface;',
+            'use Blakoder\Core\Services\BaseServiceInterface;',
             'interface FooServiceInterface extends BaseServiceInterface',
         ], 'app/Services/Foo/FooServiceInterface.php');
     }

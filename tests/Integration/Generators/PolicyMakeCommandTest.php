@@ -1,6 +1,6 @@
 <?php
 
-namespace Controlla\Core\Tests\Integration\Generators;
+namespace Blakoder\Core\Tests\Integration\Generators;
 
 class PolicyMakeCommandTest extends TestCase
 {
@@ -10,7 +10,7 @@ class PolicyMakeCommandTest extends TestCase
 
     public function testItCanGenerateRequestFile()
     {
-        $this->artisan('controlla:make:policy', ['name' => 'FooPolicy', '--model' => 'Foo'])
+        $this->artisan('blakoder:make:policy', ['name' => 'FooPolicy', '--model' => 'Foo'])
             ->assertExitCode(0);
 
         $this->assertFileContains([
