@@ -37,7 +37,6 @@ class ReplaceLinesCommand extends Command
      * @var array
      */
     protected $replaceFiles = [
-        'app/Http/Controllers/IndexController.php',
         'app/Providers/AppServiceProvider.php',
         'routes/api.php',
         'database/seeders/PermissionsTableSeeder.php',
@@ -49,7 +48,6 @@ class ReplaceLinesCommand extends Command
      * @var array
      */
     protected $replaceLines = [
-        '// New MenuItem' => 'menuItem',
         '// New Singleton' => 'register',
         '// New ApiRoute' => 'apiRoute',
         '// New Permissions' => 'permissions',
