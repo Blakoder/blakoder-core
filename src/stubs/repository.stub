@@ -68,7 +68,7 @@ class {{ model }}Repository implements {{ model }}RepositoryInterface
      */
     public function update($id, array $data)
     {
-        return {{ model }}::findOrFail($id)->update($data);
+        return tap({{ model }}::findOrFail($id))->update($data);
     }
 
     /**
