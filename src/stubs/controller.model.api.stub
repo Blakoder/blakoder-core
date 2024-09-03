@@ -37,9 +37,11 @@ class {{ class }} extends Controller
      */
     public function index(Request $request): JsonResponse
     {
-        $this->authorize('index', {{ model }}::class);
+        $companyId = $request->header('X-Company-Id');
 
-        return {{ model }}Resource::collection($this->service->getAllPaginated($request))->response();
+        $this->authorize('viewAny', [{{ model }}::class, $companyId]);
+
+        return {{ model }}Resource::collection($this->service->getAll($companyId))->response();
     }
 
     /**
@@ -50,8 +52,13 @@ class {{ class }} extends Controller
      */
     public function store({{ model }}StoreRequest $request): {{ model }}Resource
     {
-        $this->authorize('store', {{ model }}::class);
-        return new {{ model }}Resource($this->service->create($request->validated()));
+        $data = $request->validated();
+
+        $data['company_id'] = $request->header('X-Company-Id');
+
+        $this->authorize('create', [{{ model }}::class, $data['company_id']]);
+
+        return new {{ model }}Resource($this->service->create($data));
     }
 
     /**
@@ -62,8 +69,10 @@ class {{ class }} extends Controller
      */
     public function show({{ model }} ${{ modelVariable }}): {{ model }}Resource
     {
-        $this->authorize('show', ${{ modelVariable }});
+        $this->authorize('view', [${{ modelVariable }}, $request->header('X-Company-Id')]);
+
         ${{ modelVariable }} = $this->service->findOrFail(${{ modelVariable }}->id);
+
         return new {{ model }}Resource(${{ modelVariable }});
     }
 
@@ -76,8 +85,10 @@ class {{ class }} extends Controller
      */
     public function update({{ model }}UpdateRequest $request, {{ model }} ${{ modelVariable }}): {{ model }}Resource
     {
-        $this->authorize('update', ${{ modelVariable }});
+        $this->authorize('update', [${{ modelVariable }}, $request->header('X-Company-Id')]);
+
         ${{ modelVariable }} = $this->service->update(${{ modelVariable }}->id, $request->validated());
+
         return new {{ model }}Resource(${{ modelVariable }});
     }
 
@@ -89,8 +100,10 @@ class {{ class }} extends Controller
      */
     public function destroy({{ model }} ${{ modelVariable }}): JsonResponse
     {
-        $this->authorize('destroy', ${{ modelVariable }});
+        $this->authorize('delete', [${{ modelVariable }}, $request->header('X-Company-Id')]);
+
         $this->service->delete(${{ modelVariable }}->id);
+
         return response()->json(null, 204);
     }
 
@@ -108,7 +121,7 @@ class {{ class }} extends Controller
             if (!${{ modelVariable }}) {
                 return response()->json(['errors' => [['code' => 404, 'message' => __('{{ modelVariablePlural }}.not_find')]]], 404);
             }
-            $this->authorize('destroy', ${{ modelVariable }});
+            $this->authorize('delete', ${{ modelVariable }});
         }
 
         $this->service->destroy($request->input('ids'));
@@ -124,7 +137,10 @@ class {{ class }} extends Controller
      */
     public function export(ExportRequest $request, Excel $excel)
     {
-        $this->authorize('index', {{ model }}::class);
+        $companyId = $request->header('X-Company-Id');
+
+        $this->authorize('export', [{{ model }}::class, $companyId]);
+
         $file = '{{ modelVariablePlural }}.' . $request->input('format');
         $queryBuilder = new QueryBuilder(new {{ model }}(), $request->request);
         return $excel->download(new {{ model }}Export($queryBuilder->build()->get()), $file);
@@ -138,6 +154,10 @@ class {{ class }} extends Controller
      */
     public function import(ImportRequest $request, Excel $excel): JsonResponse
     {
+        $companyId = $request->header('X-Company-Id');
+
+        $this->authorize('import', [{{ model }}::class, $companyId]);
+
         $excel->import(new {{ model }}Import(auth()->user()), $request->file('importFile'));
 
         return response()->json(['code' => 201,'message' => __('strings.imported_successfully')], 201);

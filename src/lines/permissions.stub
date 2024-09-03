@@ -1,7 +1,9 @@
-Permission::create(['name' => '{{ modelVariablePlural }}.index']);
-        Permission::create(['name' => '{{ modelVariablePlural }}.show']);
-        Permission::create(['name' => '{{ modelVariablePlural }}.store']);
+Permission::create(['name' => '{{ modelVariablePlural }}.viewAny']);
+        Permission::create(['name' => '{{ modelVariablePlural }}.view']);
+        Permission::create(['name' => '{{ modelVariablePlural }}.create']);
         Permission::create(['name' => '{{ modelVariablePlural }}.update']);
-        Permission::create(['name' => '{{ modelVariablePlural }}.destroy']);
+        Permission::create(['name' => '{{ modelVariablePlural }}.delete']);
+        Permission::create(['name' => '{{ modelVariablePlural }}.import']);
+        Permission::create(['name' => '{{ modelVariablePlural }}.export']);
 
         // New Permissions

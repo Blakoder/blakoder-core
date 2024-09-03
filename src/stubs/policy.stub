@@ -16,9 +16,9 @@ class DummyClass
      * @param  \App\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function index(User $user)
+    public function viewAny(User $user, $companyId)
     {
-        return $user->can('{{ modelVariablePlural }}.index');
+        return intval($user->company_id) === intval($companyId) && $user->can('{{ modelVariablePlural }}.viewAny');
     }
 
     /**
@@ -28,9 +28,9 @@ class DummyClass
      * @param  \DummyFullModelClass  ${{ modelVariable }}
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function show(User $user, DummyModelClass ${{ modelVariable }})
+    public function view(User $user, DummyModelClass ${{ modelVariable }}, $companyId)
     {
-        return $user->can('{{ modelVariablePlural }}.show');
+        return intval($user->company_id) === intval($companyId) && intval($user->company_id) === intval(${{ modelVariable }}->company_id) && $user->can('{{ modelVariablePlural }}.view');
     }
 
     /**
@@ -39,9 +39,9 @@ class DummyClass
      * @param  \App\Models\User  $user
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function store(User $user)
+    public function create(User $user, $companyId)
     {
-        return $user->can('{{ modelVariablePlural }}.store');
+        return intval($user->company_id) === intval($companyId) && $user->can('{{ modelVariablePlural }}.create');
     }
 
     /**
@@ -51,9 +51,9 @@ class DummyClass
      * @param  \DummyFullModelClass  ${{ modelVariable }}
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function update(User $user, DummyModelClass ${{ modelVariable }})
+    public function update(User $user, DummyModelClass ${{ modelVariable }}, $companyId)
     {
-        return $user->can('{{ modelVariablePlural }}.update');
+        return intval($user->company_id) === intval($companyId) && intval($user->company_id) === intval(${{ modelVariable }}->company_id) && $user->can('{{ modelVariablePlural }}.update');
     }
 
     /**
@@ -63,8 +63,18 @@ class DummyClass
      * @param  \DummyFullModelClass  ${{ modelVariable }}
      * @return \Illuminate\Auth\Access\Response|bool
      */
-    public function destroy(User $user, DummyModelClass ${{ modelVariable }})
+    public function delete(User $user, DummyModelClass ${{ modelVariable }}, $companyId)
     {
-        return $user->can('{{ modelVariablePlural }}.destroy');
+        return intval($user->company_id) === intval($companyId) && intval($user->company_id) === intval(${{ modelVariable }}->company_id) && $user->can('{{ modelVariablePlural }}.delete');
+    }
+
+    public function import(User $user, $companyId): bool
+    {
+        return intval($user->company_id) === intval($companyId) && $user->can('{{ modelVariablePlural }}.import');
+    }
+
+    public function export(User $user, $companyId)
+    {
+        return intval($user->company_id) === intval($companyId) && $user->can('{{ modelVariablePlural }}.export');
     }
 }
