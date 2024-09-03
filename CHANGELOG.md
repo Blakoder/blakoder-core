@@ -2,6 +2,10 @@
 
 All notable changes to `core` will be documented in this file.
 
+## 1.0.3 - 2024-09-03
+
+**Full Changelog**: https://github.com/Blakoder/blakoder-core/compare/1.0.2...1.0.3
+
 ## 1.3.2 - 2024-07-19
 
 Fixe
