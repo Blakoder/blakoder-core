@@ -75,7 +75,7 @@ class ModuleCommand extends Command implements PromptsForMissingInput
         return [
             'module' => fn () => select(
                 label: 'Which module do you want to install?',
-                options: ['Whatsapp'],
+                options: ['Whatsapp', 'Gdpr'],
                 default: 'Whatsapp'
             ),
         ];
