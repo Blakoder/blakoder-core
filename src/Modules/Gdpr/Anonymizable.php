@@ -10,7 +10,7 @@ trait Anonymizable
     public function anonymize(): void
     {
         $attributes = $this->toAnonymizableArray();
-        
+
         foreach ($attributes as $key => $value) {
             if (is_string($value)) {
                 $this->$key = $this->anonymizeString($value);
@@ -22,18 +22,15 @@ trait Anonymizable
                 $this->$key = null;
             }
         }
-        
+
         // Marcar el modelo como anonimizado
         $this->isAnonymized = true;
-        
+
         $this->save();
     }
 
     /**
      * Anonymize a string value.
-     *
-     * @param string $value
-     * @return string
      */
     protected function anonymizeString(string $value): string
     {
@@ -52,8 +49,6 @@ trait Anonymizable
 
     /**
      * Determine if the model has been anonymized.
-     *
-     * @return bool
      */
     public function isAnonymized(): bool
     {
