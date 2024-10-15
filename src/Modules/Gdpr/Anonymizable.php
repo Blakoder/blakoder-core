@@ -11,19 +11,21 @@ trait Anonymizable
     /**
      * Fields to be anonymized. Can be a simple array of field names or an associative array with specific replacement values.
      */
-    protected $gdprAnonymizableFields = [];
+    protected static $defaultGdprAnonymizableFields = [];
 
     /**
      * Relations that should be anonymized.
      */
-    protected $gdprWith = [];
+    protected static $defaultGdprWith = [];
 
     /**
      * Anonymize the model and its relations.
      */
     public function anonymize(): void
     {
-        foreach ($this->gdprAnonymizableFields as $key => $value) {
+        $fields = $this->getGdprAnonymizableFields();
+
+        foreach ($fields as $key => $value) {
             if (is_numeric($key)) {
                 // Si es un índice numérico, usamos el valor por defecto
                 $field = $value;
@@ -40,7 +42,7 @@ trait Anonymizable
         }
 
         // Anonimizar relaciones
-        foreach ($this->gdprWith as $relation) {
+        foreach ($this->getGdprWith() as $relation) {
             if ($this->$relation instanceof Model) {
                 $this->$relation->anonymize();
             } elseif ($this->$relation instanceof Collection) {
@@ -52,6 +54,30 @@ trait Anonymizable
         $this->isAnonymized = true;
 
         $this->save();
+    }
+
+    /**
+     * Get the fields to be anonymized.
+     *
+     * @return array
+     */
+    protected function getGdprAnonymizableFields(): array
+    {
+        return property_exists($this, 'gdprAnonymizableFields')
+            ? $this->gdprAnonymizableFields
+            : static::$defaultGdprAnonymizableFields;
+    }
+
+    /**
+     * Get the relations to be anonymized.
+     *
+     * @return array
+     */
+    protected function getGdprWith(): array
+    {
+        return property_exists($this, 'gdprWith')
+            ? $this->gdprWith
+            : static::$defaultGdprWith;
     }
 
     /**
