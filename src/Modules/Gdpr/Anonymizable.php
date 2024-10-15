@@ -58,8 +58,6 @@ trait Anonymizable
 
     /**
      * Get the fields to be anonymized.
-     *
-     * @return array
      */
     protected function getGdprAnonymizableFields(): array
     {
@@ -70,8 +68,6 @@ trait Anonymizable
 
     /**
      * Get the relations to be anonymized.
-     *
-     * @return array
      */
     protected function getGdprWith(): array
     {
