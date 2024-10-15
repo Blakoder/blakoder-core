@@ -4,38 +4,44 @@ namespace Blakoder\Core\Modules\Gdpr;
 
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Config;
+use Illuminate\Support\Carbon;
 
 trait Anonymizable
 {
+    /**
+     * Fields to be anonymized. Can be a simple array of field names or an associative array with specific replacement values.
+     */
+    protected $gdprAnonymizableFields = [];
+
+    /**
+     * Relations that should be anonymized.
+     */
+    protected $gdprWith = [];
+
     /**
      * Anonymize the model and its relations.
      */
     public function anonymize(): void
     {
-        $attributes = $this->gdprAnonymizableFields();
-
-        foreach ($attributes as $key => $type) {
-            if (!isset($this->$key)) {
-                continue;
+        foreach ($this->gdprAnonymizableFields as $key => $value) {
+            if (is_numeric($key)) {
+                // Si es un índice numérico, usamos el valor por defecto
+                $field = $value;
+                $replacement = $this->anonymizeValue($this->$field);
+            } else {
+                // Si es un par clave-valor, usamos el valor específico
+                $field = $key;
+                $replacement = $value;
             }
 
-            $value = $this->$key;
-
-            if ($type === 'date' && $value instanceof \DateTime) {
-                $this->$key = $this->anonymizeDate($value->format('Y-m-d H:i:s'));
-            } elseif ($type === 'string' && is_string($value)) {
-                $this->$key = $this->anonymizeString($value);
-            } elseif ($type === 'number' && is_numeric($value)) {
-                $this->$key = 0;
-            } elseif ($type === 'boolean' && is_bool($value)) {
-                $this->$key = false;
-            } else {
-                $this->$key = null;
+            if (isset($this->$field)) {
+                $this->$field = $replacement;
             }
         }
 
         // Anonimizar relaciones
-        foreach ($this->gdprWith() as $relation) {
+        foreach ($this->gdprWith as $relation) {
             if ($this->$relation instanceof Model) {
                 $this->$relation->anonymize();
             } elseif ($this->$relation instanceof Collection) {
@@ -50,37 +56,24 @@ trait Anonymizable
     }
 
     /**
-     * Anonymize a string value.
-     */
-    protected function anonymizeString(string $value): string
-    {
-        return str_repeat('*', strlen($value));
-    }
-
-    /**
-     * Anonymize a date value.
-     */
-    protected function anonymizeDate(string $value): string
-    {
-        return '0000-00-00 00:00:00';  // O cualquier otro formato de fecha válido
-    }
-
-    /**
-     * Get the relations that should be anonymized.
+     * Anonymize a value based on its type.
      *
-     * @return array<int, string>
+     * @param mixed $value
+     * @return mixed
      */
-    public function gdprWith(): array
+    protected function anonymizeValue($value)
     {
-        return [];
+        if (is_string($value)) {
+            return str_repeat('*', strlen($value));
+        } elseif (is_numeric($value)) {
+            return 0;
+        } elseif (is_bool($value)) {
+            return false;
+        } elseif ($value instanceof Carbon) {
+            return Carbon::create(2000, 1, 1, 0, 0, 0);
+        }
+        return null;
     }
-
-    /**
-     * Get the attributes that should be anonymized.
-     *
-     * @return array<string, string>
-     */
-    abstract public function gdprAnonymizableFields(): array;
 
     /**
      * Determine if the model has been anonymized.
