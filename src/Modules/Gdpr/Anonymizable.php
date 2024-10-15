@@ -2,10 +2,9 @@
 
 namespace Blakoder\Core\Modules\Gdpr;
 
-use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 trait Anonymizable
 {
@@ -58,7 +57,7 @@ trait Anonymizable
     /**
      * Anonymize a value based on its type.
      *
-     * @param mixed $value
+     * @param  mixed  $value
      * @return mixed
      */
     protected function anonymizeValue($value)
@@ -72,6 +71,7 @@ trait Anonymizable
         } elseif ($value instanceof Carbon) {
             return Carbon::create(2000, 1, 1, 0, 0, 0);
         }
+
         return null;
     }
 
